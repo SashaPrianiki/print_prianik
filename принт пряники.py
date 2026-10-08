@@ -6,6 +6,7 @@ mixer.music.load('galaxy_rock.mp3')
 mixer.music.play(-1)
 
 click = mixer.Sound('click sound.wav')
+click.set_volume(0.2)
 nowi_coin = mixer.Sound('money_sound.wav')
 
 mw = display.set_mode((700, 500))
@@ -62,7 +63,7 @@ while game:
 
         if e.type == KEYDOWN:
             click.play()
-            if e.key == K_g:
+            if e.key == K_g and shifr_prianikov == 0:
                 click.play()
                 NAPISANIE_PRIANIKI_g = font2.render('П', True, (169, 127, 81))
                 mw.blit(NAPISANIE_PRIANIKI_g, (120, 200))
@@ -70,7 +71,7 @@ while game:
                 print(shifr_prianikov)
 
         if e.type == KEYDOWN:
-            if e.key == K_h:
+            if e.key == K_h and shifr_prianikov == 1:
                 click.play()
                 NAPISANIE_PRIANIKI_h = font2.render('Р', True, (169, 127, 81))
                 mw.blit(NAPISANIE_PRIANIKI_h, (170, 200))
@@ -78,7 +79,7 @@ while game:
                 print(shifr_prianikov)
 
         if e.type == KEYDOWN:
-            if e.key == K_z:
+            if e.key == K_z and shifr_prianikov == 2:
                 click.play()
                 NAPISANIE_PRIANIKI_z = font2.render('Я', True, (169, 127, 81))
                 mw.blit(NAPISANIE_PRIANIKI_z, (215, 200))
@@ -86,7 +87,7 @@ while game:
                 print(shifr_prianikov)
 
         if e.type == KEYDOWN:
-            if e.key == K_y:
+            if e.key == K_y and shifr_prianikov == 3:
                 click.play()
                 NAPISANIE_PRIANIKI_y = font2.render('Н', True, (169, 127, 81))
                 mw.blit(NAPISANIE_PRIANIKI_y, (265, 200))
@@ -94,7 +95,7 @@ while game:
                 print(shifr_prianikov)
 
         if e.type == KEYDOWN:
-            if e.key == K_b:
+            if e.key == K_b and shifr_prianikov == 4:
                 click.play()
                 NAPISANIE_PRIANIKI_b = font2.render('И', True, (169, 127, 81))
                 mw.blit(NAPISANIE_PRIANIKI_b, (315, 200))
@@ -102,19 +103,19 @@ while game:
                 print(shifr_prianikov)
 
         if e.type == KEYDOWN:
-            if e.key == K_r:
+            if e.key == K_r and shifr_prianikov == 5:
                 click.play()
                 NAPISANIE_PRIANIKI_r = font2.render('К', True, (169, 127, 81))
                 mw.blit(NAPISANIE_PRIANIKI_r, (365, 200))
                 shifr_prianikov += 1
                 print(shifr_prianikov)
-                coins += 1
-                print('коинов:',coins)
                 nowi_coin.play()
 
     if finish != True:
 
-        if shifr_prianikov == 6:
+        if shifr_prianikov == 6: #проверка что ПРЯНИК написан
+            coins += 1
+            print('коинов:',coins)
             shifr_prianikov = 0
             col_vo_prianikov += 1
             uberi = font2.render('ПРЯНИК', True, (69, 127, 81))
@@ -139,15 +140,12 @@ while game:
                 pobeda = font2.render('следующий раунд!', True, (169, 127, 251))
                 mw.blit(pobeda, (10, 200))
                 raunds += 1
-
-            
+                finish = True
 
             if raunds == 1:
                 print('раунд')
 
-            display.update()
-        if col_vo_prianikov == skolko:
-            finish = True
+            display.update()       
 
         display.update()
         timer.tick(FPS)
@@ -160,5 +158,5 @@ while game:
         skolko = randint(5, 10)
         finish = False
         mw.fill((69, 127, 81))
-        time.delay(1500)
+        time.delay(500)
     
