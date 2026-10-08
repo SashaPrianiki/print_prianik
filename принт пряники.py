@@ -144,7 +144,6 @@ while game:
 
             if raunds == 1:
                 print('раунд')
-                raunds - 1
 
             display.update()
         if col_vo_prianikov == skolko:
